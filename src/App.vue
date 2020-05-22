@@ -4,13 +4,13 @@
       <template v-slot:menu-bar>Menu bar</template>
       <template v-slot:file-system>file system</template>
       <template v-slot:main-display>
-        <ComponentFactory :componentType="elementType" :style="style"/>
+        <ComponentFactory :componentType="elementType" :styles="styles" />
       </template>
       <template v-slot:component-details>
-        <DetailsComp @set-element-type="setElementType"/>
+        <DetailsComp @set-element-type="setElementType" />
       </template>
       <template v-slot:component-styles>
-        <StylesComp @set-styles="setStyle"/>
+        <StylesComp @set-styles="setStyle" />
       </template>
     </MainLayout>
   </div>
@@ -28,23 +28,23 @@ export default {
     MainLayout,
     ComponentFactory,
     DetailsComp,
-    StylesComp
+    StylesComp,
   },
   data() {
     return {
-      elementType: null,
-      style: null
+      elementType: "",
+      styles: {},
     };
   },
   methods: {
     setElementType(type) {
       this.elementType = type;
     },
-    setStyle(style) {
-      console.log("here!!!");
-      this.style = style;
-    }
-  }
+    setStyle(styles) {
+      console.log(styles);
+      this.styles = styles;
+    },
+  },
 };
 </script>
 

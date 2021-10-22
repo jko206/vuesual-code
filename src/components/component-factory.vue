@@ -1,13 +1,12 @@
 <template>
-  <div v-if="componentType === 'div'" :style="styles">div</div>
-  <button v-else-if="componentType === 'button'" :style="styles">button</button>
+  <div v-html="templateHtml" :style="styles"></div>
 </template>
 
 <script>
 export default {
   name: "ComponentFactory",
   props: {
-    componentType: {
+    templateHtml: {
       type: [String, null],
       required: true,
     },

@@ -4,10 +4,10 @@
       <template v-slot:menu-bar>Menu bar</template>
       <template v-slot:file-system>file system</template>
       <template v-slot:main-display>
-        <ComponentFactory :componentType="elementType" :styles="styles" />
+        <ComponentFactory :templateHtml="template" :styles="styles" />
       </template>
       <template v-slot:component-details>
-        <DetailsComp @set-element-type="setElementType" />
+        <TemplateInput @set-element-type="setElementType" />
       </template>
       <template v-slot:component-styles>
         <StylesComp @set-styles="setStyle" />
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import MainLayout from "./components/MainLayout";
-import DetailsComp from "./components/details-comp";
+import MainLayout from "./components/main-layout";
+import TemplateInput from "./components/template-input";
 import ComponentFactory from "./components/component-factory";
 import StylesComp from "./components/styles-comp";
 
@@ -27,21 +27,20 @@ export default {
   components: {
     MainLayout,
     ComponentFactory,
-    DetailsComp,
+    TemplateInput,
     StylesComp,
   },
   data() {
     return {
-      elementType: "",
+      template: "",
       styles: {},
     };
   },
   methods: {
-    setElementType(type) {
-      this.elementType = type;
+    setElementType(template) {
+      this.template = template;
     },
     setStyle(styles) {
-      console.log(styles);
       this.styles = styles;
     },
   },
